@@ -20,6 +20,10 @@ const routes = [
     name: "Stop",
     component: () => import("/src/views/Stop.vue"),
   },  
+  {
+    path:"*",
+    component: () => import("/src/views/Home.vue"),
+  }
   // {
   //   path: "/city",
   //   name: "",

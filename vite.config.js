@@ -5,7 +5,6 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/taiwanbus/',
   plugins: [vue()],
   resolve: {
     alias: {
@@ -17,6 +16,7 @@ export default defineConfig({
       VUE_APP_GOOGLE_MAP_API_KEY:'AIzaSyAFKPiMUc5jyVnzoWAJush-EDagXdyHgVc',
     }
   },    
+  base:'/taiwanbus/',
   // build: {
   //   minify: true,
   // },  
