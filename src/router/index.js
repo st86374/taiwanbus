@@ -3,22 +3,22 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("/src/views/Home.vue"),
+    component: () => import("@/views/Home.vue"),
   },
   {
     path: "/city/:city",
     name: "City",
-    component: () => import("/src/views/City.vue"),
+    component: () => import("@/views/City.vue"),
   },
   {
     path: "/bus/:city/:bus",
     name: "Bus",
-    component: () => import("/src/views/Bus.vue"),
+    component: () => import("@/views/Bus.vue"),
   },
   {
     path: "/stop/:city/:stop",
     name: "Stop",
-    component: () => import("/src/views/Stop.vue"),
+    component: () => import("@/views/Stop.vue"),
   },  
 ];
 export default createRouter({
