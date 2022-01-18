@@ -16,7 +16,7 @@ export default defineConfig({
       VUE_APP_GOOGLE_MAP_API_KEY:'AIzaSyAFKPiMUc5jyVnzoWAJush-EDagXdyHgVc',
     }
   },    
-  base:'/taiwanbus/',
+  base:'./taiwanbus/',
   // build: {
   //   minify: true,
   // },  

@@ -20,26 +20,6 @@ const routes = [
     name: "Stop",
     component: () => import("/src/views/Stop.vue"),
   },  
-  {
-    path:"*",
-    component: () => import("/src/views/Home.vue"),
-  }
-  // {
-  //   path: "/city",
-  //   name: "",
-  //   children: [
-  //     {
-  //       path: "/:city",
-  //       name: "City",
-  //       component: () => import("/src/views/City.vue"),
-  //     },
-  //     // {
-  //     //   path: ':city/:busName',
-  //     //   name: 'BusRouteStatusInfo',
-  //     //   component: () => import("/src/views/Search.vue"),
-  //     // },
-  //   ],
-  // },
 ];
 export default createRouter({
   history: createWebHistory(),
