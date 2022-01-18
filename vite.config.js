@@ -12,14 +12,15 @@ export default defineConfig({
       '@': path.resolve(__dirname, '/src'),
     },
   },
-  build: {
-    minify: true,
-  },  
   define:{
     'process.env':{
       VUE_APP_GOOGLE_MAP_API_KEY:'AIzaSyAFKPiMUc5jyVnzoWAJush-EDagXdyHgVc',
     }
-  },
+  },    
+  build: {
+    minify: true,
+  },  
+
   // server: {
   //   host: true,
   //   port:8787
