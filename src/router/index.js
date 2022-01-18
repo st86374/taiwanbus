@@ -1,24 +1,28 @@
 import { createRouter, createWebHistory } from "vue-router";
+import homePage from "@/views/Home.vue"
+import cityPage from "@/views/City.vue"
+import busPage from "@/views/Bus.vue"
+import stopPage from "@/views/Stop.vue"
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("../views/Home.vue"),
+    component: homePage,
   },
   {
     path: "/city/:city",
     name: "City",
-    component: () => import("../views/City.vue"),
+    component: cityPage,
   },
   {
     path: "/bus/:city/:bus",
     name: "Bus",
-    component: () => import("../views/Bus.vue"),
+    component: busPage,
   },
   {
     path: "/stop/:city/:stop",
     name: "Stop",
-    component: () => import("../views/Stop.vue"),
+    component: stopPage,
   },  
 ];
 export default createRouter({
