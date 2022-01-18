@@ -1,7 +1,9 @@
 <template class="main">
 <Loading v-show="load" ></Loading>
   <div class="max-w-md mx-auto">
+    <div class="fixed top-0 max-w-md mx-auto z-10 w-full">
   <Header></Header>
+    </div>
   <router-view></router-view>
   </div>
 </template>
