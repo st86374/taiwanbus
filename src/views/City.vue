@@ -1,9 +1,4 @@
 <template>
-  <Base>
-    <template #header>
-      <Header></Header>
-    </template>
-    <template #body>
       <div class="bg-white dark:bg-black relative mt-[48px]">
         <div
           class="flex items-center w-full p-3 text-black bg-white border-b-2 dark:text-white border-main dark:bg-black"
@@ -212,15 +207,11 @@
           </button>
         </div>
       </div>
-    </template>
-  </Base>
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
 import { cities } from "@/utils/cities";
 import { apiGetCityRoute } from "@/api/bus";
-import Base from "@/layouts/Base.vue";
-import Header from "@/components/Header.vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
 const store = useStore();

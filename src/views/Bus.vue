@@ -1,9 +1,4 @@
 <template>
-  <Base>
-    <template #header>
-      <Header></Header>
-    </template>
-    <template #body>
       <div class="fixed top-[48px] max-w-md mx-auto w-full text-gray-400 bg-white dark:bg-black p-3">
         <div class="grid grid-cols-2 grid-rows-1">
           <div class="py-2">
@@ -128,17 +123,13 @@
           </div>
         </div>
       </div>
-    </template>
-  </Base>
 </template>
 <script setup>
 import { apiGetRouteArrival, apiGetStopOfRoute, apiGetRouteInfo } from '@/api/bus'
-import Base from '@/layouts/Base.vue'
 import { cities } from '@/utils/cities'
 import { dark_map } from '@/utils/map'
 import mark_img from '@/assets/img/marker.png'
 import { createHTMLMapMarker } from '@/utils/map_html'
-import Header from '@/components/Header.vue'
 import { ref, onMounted, watch, computed, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'

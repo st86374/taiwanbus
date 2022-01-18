@@ -1,9 +1,4 @@
 <template>
-  <Base>
-    <template #header>
-      <Header></Header>
-    </template>
-    <template #body>
       <div
         class="bg-top bg-cover bg-no-repeat bg-[url('@/assets/img/banner-2.jpeg')] dark:bg-[url('@/assets/img/banner.jpeg')] w-full min-h-[calc(50vh-40px)] relative overflow-hidden"
       >
@@ -184,16 +179,11 @@
         <slot name="footer"></slot>
         <p>Copyright©2022 TangYuCheng</p>
       </div>
-    </template>
-  </Base>
 </template>
 <script setup>
 import { computed, ref, onMounted, watch, onUnmounted } from "vue";
 import { cities } from "@/utils/cities";
 import { apiGetCityRoute } from "@/api/bus";
-import Base from "@/layouts/Base.vue";
-import Header from "@/components/Header.vue";
-// import Cookies from "js-cookie";
 import { useRouter, useRoute } from "vue-router";
 const route = useRoute();
 const router = useRouter();
