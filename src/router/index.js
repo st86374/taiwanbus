@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory,createWebHistory } from "vue-router";
 import homePage from "@/views/Home.vue"
 import cityPage from "@/views/City.vue"
 import busPage from "@/views/Bus.vue"
@@ -26,6 +26,6 @@ const routes = [
   },  
 ];
 export default createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
