@@ -278,7 +278,7 @@ const setMarkers = () => {
         content: `<div class="w-full text-center min-w-[100px] min-h-[55px]">
         <p class="mb-3 font-bold text-md">${i + 1}. ${stop.value[direction.value].Stops[i].StopName.Zh_tw}</p>
         <div>
-        <a class="p-2 text-white rounded bg-main" href="/${city}/stop/${
+        <a class="p-2 text-white rounded bg-main" href="https://st86374.github.io/taiwanbus/#/${city}/stop/${
           stop.value[direction.value].Stops[i].StopName.Zh_tw
         }">公車查詢</a>
         </div>
