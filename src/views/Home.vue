@@ -1,184 +1,184 @@
 <template>
-      <div
-        class="bg-top bg-cover bg-no-repeat bg-[url('@/assets/img/banner-2.jpeg')] dark:bg-[url('@/assets/img/banner.jpeg')] w-full min-h-[calc(50vh-40px)] relative overflow-hidden"
+  <div
+    class="bg-top bg-cover bg-no-repeat bg-[url('@/assets/img/banner-2.jpeg')] dark:bg-[url('@/assets/img/banner.jpeg')] w-full min-h-[calc(50vh-40px)] relative overflow-hidden"
+  >
+    <!-- <h1 class="text-2xl font-bold text-center text-white">TaiwanBus</h1> -->
+    <div
+      class="absolute w-full h-[30px] scale-150 bg-white dark:bg-black bottom-[-20px] blur-sm"
+    ></div>
+    <a
+      class="fixed z-10 left-[8px] top-[8px] text-gray-400"
+      v-show="view == 'all'"
+      @click.prevent="viewChange('home'), scrollPoint(-1)"
+      href="#"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
-        <!-- <h1 class="text-2xl font-bold text-center text-white">TaiwanBus</h1> -->
-        <div
-          class="absolute w-full h-[30px] scale-150 bg-white dark:bg-black bottom-[-20px] blur-sm"
-        ></div>
-        <a
-          class="fixed z-10 left-[8px] top-[8px] text-gray-400"
-          v-show="view == 'all'"
-          @click.prevent="viewChange('home'), scrollPoint(-1)"
-          href="#"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-8 h-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </a>
-      </div>
-      <div
-        v-if="view === 'home'"
-        class="dark:text-white text-xl bg-white dark:bg-black gap-2 grid grid-flow-row-dense grid-cols-2 grid-rows-4 p-2 min-h-[50vh]"
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+    </a>
+  </div>
+  <div
+    v-if="view === 'home'"
+    class="dark:text-white text-xl bg-white dark:bg-black gap-2 grid grid-flow-row-dense grid-cols-2 grid-rows-4 p-2 min-h-[50vh]"
+  >
+    <button
+      class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
+      v-for="item in listFilter()"
+      :key="item.value"
+      @click.prevent="router.push(`/city/${item.value}`)"
+    >
+      {{ item.name }}
+    </button>
+    <button
+      class="col-span-2 duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
+      @click.prevent="viewChange('all')"
+    >
+      全部城市
+    </button>
+  </div>
+  <div v-else>
+    <div
+      class="sticky top-[47px] flex items-center bg-white dark:bg-black dark:text-white"
+    >
+      <a
+        class="border-b-2 border-[transparent] py-2 px-4"
+        @click.prevent="scrollPoint(0)"
+        :class="{
+          'text-main': section == 0,
+        }"
+        href="#"
+        >北部</a
       >
-        <button
-          class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
-          v-for="item in listFilter()"
-          :key="item.value"
-          @click.prevent="router.push(`/city/${item.value}`)"
-        >
-          {{ item.name }}
-        </button>
-        <button
-          class="col-span-2 duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
-          @click.prevent="viewChange('all')"
-        >
-          全部城市
-        </button>
-      </div>
-      <div v-else>
+      <a
+        class="border-b-2 border-[transparent] py-2 px-4"
+        @click.prevent="scrollPoint(1)"
+        :class="{
+          'text-main': section == 1,
+        }"
+        href="#"
+        >中部</a
+      >
+      <a
+        class="border-b-2 border-[transparent] py-2 px-4"
+        @click.prevent="scrollPoint(2)"
+        :class="{
+          'text-main': section == 2,
+        }"
+        href="#"
+        >南部</a
+      >
+      <a
+        class="border-b-2 border-[transparent] py-2 px-4"
+        @click.prevent="scrollPoint(3)"
+        :class="{
+          'text-main': section == 3,
+        }"
+        href="#"
+        >東部</a
+      >
+      <a
+        class="border-b-2 border-[transparent] py-2 px-4"
+        @click.prevent="scrollPoint(4)"
+        :class="{
+          'text-main': section == 4,
+        }"
+        href="#"
+        >外島</a
+      >
+    </div>
+    <div class="text-black bg-white dark:text-white dark:bg-black">
+      <div class="js-block" id="north">
+        <h2 class="p-2 mx-3 text-2xl font-bold text-main">北部</h2>
         <div
-          class="sticky top-[47px] flex items-center bg-white dark:bg-black dark:text-white"
+          class="dark:text-white text-xl gap-2 grid grid-flow-row-dense grid-cols-2 grid-rows-4 p-2 min-h-[50vh]"
         >
-          <a
-            class="border-b-2 border-[transparent] py-2 px-4"
-            @click.prevent="scrollPoint(0)"
-            :class="{
-              'text-main': section == 0,
-            }"
-            href="#"
-            >北部</a
+          <button
+            class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
+            v-for="item in listFilter('north')"
+            :key="item.value"
+            @click.prevent="router.push(`/city/${item.value}`)"
           >
-          <a
-            class="border-b-2 border-[transparent] py-2 px-4"
-            @click.prevent="scrollPoint(1)"
-            :class="{
-              'text-main': section == 1,
-            }"
-            href="#"
-            >中部</a
-          >
-          <a
-            class="border-b-2 border-[transparent] py-2 px-4"
-            @click.prevent="scrollPoint(2)"
-            :class="{
-              'text-main': section == 2,
-            }"
-            href="#"
-            >南部</a
-          >
-          <a
-            class="border-b-2 border-[transparent] py-2 px-4"
-            @click.prevent="scrollPoint(3)"
-            :class="{
-              'text-main': section == 3,
-            }"
-            href="#"
-            >東部</a
-          >
-          <a
-            class="border-b-2 border-[transparent] py-2 px-4"
-            @click.prevent="scrollPoint(4)"
-            :class="{
-              'text-main': section == 4,
-            }"
-            href="#"
-            >外島</a
-          >
-        </div>
-        <div class="text-black bg-white dark:text-white dark:bg-black">
-          <div class="js-block" id="north">
-            <h2 class="p-2 mx-3 text-2xl font-bold text-main">北部</h2>
-            <div
-              class="dark:text-white text-xl gap-2 grid grid-flow-row-dense grid-cols-2 grid-rows-4 p-2 min-h-[50vh]"
-            >
-              <button
-                class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
-                v-for="item in listFilter('north')"
-                :key="item.value"
-                @click.prevent="router.push(`/city/${item.value}`)"
-              >
-                {{ item.name }}
-              </button>
-            </div>
-          </div>
-          <div class="js-block" id="central">
-            <h2 class="mx-3 text-2xl font-bold text-main">中部</h2>
-            <div
-              class="text-xl gap-2 grid grid-flow-row-dense grid-cols-2 p-2 min-h-[37.5vh]"
-            >
-              <button
-                class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
-                v-for="item in listFilter('central')"
-                :key="item.value"
-                @click.prevent="router.push(`/city/${item.value}`)"
-              >
-                {{ item.name }}
-              </button>
-            </div>
-          </div>
-          <div class="js-block" id="south">
-            <h2 class="mx-3 text-2xl font-bold text-main">南部</h2>
-            <div
-              class="dark:text-white text-xl bg-white dark:bg-black gap-2 grid grid-flow-row-dense grid-cols-2 p-2 min-h-[37.5vh]"
-            >
-              <button
-                class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
-                v-for="item in listFilter('south')"
-                :key="item.value"
-                @click.prevent="router.push(`/city/${item.value}`)"
-              >
-                {{ item.name }}
-              </button>
-            </div>
-          </div>
-          <div class="js-block" id="east">
-            <h2 class="mx-3 text-2xl font-bold text-main">東部</h2>
-            <div
-              class="dark:text-white text-xl bg-white dark:bg-black gap-2 grid grid-flow-row-dense grid-cols-2 p-2 min-h-[12.5vh]"
-            >
-              <button
-                class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
-                v-for="item in listFilter('east')"
-                :key="item.value"
-                @click.prevent="router.push(`/city/${item.value}`)"
-              >
-                {{ item.name }}
-              </button>
-            </div>
-          </div>
-          <div class="js-block" id="island">
-            <h2 class="mx-3 text-2xl font-bold text-main">外島</h2>
-            <div
-              class="dark:text-white text-xl bg-white dark:bg-black gap-2 grid grid-flow-row-dense grid-cols-2 p-2 min-h-[25vh]"
-            >
-              <button
-                class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
-                v-for="item in listFilter('island')"
-                :key="item.value"
-                @click.prevent="router.push(`/city/${item.value}`)"
-              >
-                {{ item.name }}
-              </button>
-            </div>
-          </div>
+            {{ item.name }}
+          </button>
         </div>
       </div>
-      <div class="p-2 text-center text-gray-400 bg-white footer dark:bg-black">
-        <slot name="footer"></slot>
-        <p>Copyright©2022 TangYuCheng</p>
+      <div class="js-block" id="central">
+        <h2 class="mx-3 text-2xl font-bold text-main">中部</h2>
+        <div
+          class="text-xl gap-2 grid grid-flow-row-dense grid-cols-2 p-2 min-h-[37.5vh]"
+        >
+          <button
+            class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
+            v-for="item in listFilter('central')"
+            :key="item.value"
+            @click.prevent="router.push(`/city/${item.value}`)"
+          >
+            {{ item.name }}
+          </button>
+        </div>
       </div>
+      <div class="js-block" id="south">
+        <h2 class="mx-3 text-2xl font-bold text-main">南部</h2>
+        <div
+          class="dark:text-white text-xl bg-white dark:bg-black gap-2 grid grid-flow-row-dense grid-cols-2 p-2 min-h-[37.5vh]"
+        >
+          <button
+            class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
+            v-for="item in listFilter('south')"
+            :key="item.value"
+            @click.prevent="router.push(`/city/${item.value}`)"
+          >
+            {{ item.name }}
+          </button>
+        </div>
+      </div>
+      <div class="js-block" id="east">
+        <h2 class="mx-3 text-2xl font-bold text-main">東部</h2>
+        <div
+          class="dark:text-white text-xl bg-white dark:bg-black gap-2 grid grid-flow-row-dense grid-cols-2 p-2 min-h-[12.5vh]"
+        >
+          <button
+            class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
+            v-for="item in listFilter('east')"
+            :key="item.value"
+            @click.prevent="router.push(`/city/${item.value}`)"
+          >
+            {{ item.name }}
+          </button>
+        </div>
+      </div>
+      <div class="js-block" id="island">
+        <h2 class="mx-3 text-2xl font-bold text-main">外島</h2>
+        <div
+          class="dark:text-white text-xl bg-white dark:bg-black gap-2 grid grid-flow-row-dense grid-cols-2 p-2 min-h-[25vh]"
+        >
+          <button
+            class="duration-300 ease-in-out bg-gray-200 rounded-lg dark:bg-gray-800 hover:bg-main hover:text-white"
+            v-for="item in listFilter('island')"
+            :key="item.value"
+            @click.prevent="router.push(`/city/${item.value}`)"
+          >
+            {{ item.name }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="p-2 text-center text-gray-400 bg-white footer dark:bg-black">
+    <slot name="footer"></slot>
+    <p>Copyright©2022 TangYuCheng</p>
+  </div>
 </template>
 <script setup>
 import { computed, ref, onMounted, watch, onUnmounted } from "vue";
@@ -193,8 +193,8 @@ onMounted(() => {
   window.addEventListener("scroll", scrollEvent);
 });
 onUnmounted(() => {
-  window.removeEventListener('scroll', scrollEvent)
-})
+  window.removeEventListener("scroll", scrollEvent);
+});
 const listFilter = (str) => {
   let result;
   if (str) {
@@ -238,22 +238,22 @@ const scrollEvent = (e) => {
 const viewChange = (str) => {
   view.value = str;
   if (str === "all") {
-    window.location.hash = "all";
+    // window.location.hash = "all";
     view.value = "all";
     setTimeout(() => {
       scrollPoint(0);
     }, 0);
   } else {
-    window.location.hash = "";
+    // window.location.hash = "";
     view.value = "home";
   }
 };
 watch(
   () => route.hash,
-  (o,n) => {
+  (o, n) => {
     if (!n) {
       view.value = "all";
-      } else {
+    } else {
       view.value = "home";
     }
   }
