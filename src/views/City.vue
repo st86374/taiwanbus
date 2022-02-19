@@ -209,7 +209,7 @@
       </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, reactive,onMounted } from "vue";
 import { cities } from "@/utils/cities";
 import { apiGetCityRoute } from "@/api/bus";
 import { useRouter, useRoute } from "vue-router";
@@ -219,7 +219,7 @@ const route = useRoute();
 const router = useRouter();
 const { city } = route.params;
 const city_name = ref();
-const list = ref([]);
+const list = reactive([]);
 const search = ref(null);
 const edit = ref(false);
 const keyword = ref("");
@@ -228,8 +228,7 @@ const getCityAllRoute = async () => {
   try {
     const res = await apiGetCityRoute(city);
     list.value = res.data;
-      store.dispatch("handLoadingToggle");
-
+    store.dispatch("handLoadingToggle");
   } catch (error) {
     console.log(error);
   }
@@ -251,19 +250,7 @@ const listFilter = () => {
     return result;
   }
 };
-const buttonEvent = (str, e) => {
-  switch (str) {
-    case "clear":
-      keyword.value = "";
-      break;
-    case "back":
-      if (keyword.value === "") {
-        keyword.value = "";
-      } else {
-        keyword.value = keyword.value.slice(0, -1);
-      }
-      break;
-    case "more":
+const createFakeElementAndRemove =()=>{
       edit.value = true;
       let fakeInput = document.createElement("input");
       document.body.appendChild(fakeInput);
@@ -273,6 +260,24 @@ const buttonEvent = (str, e) => {
         document.getElementById("searchInput").click();
         document.body.removeChild(fakeInput);
       }, 0);
+}
+const keyValueCheck =()=>{
+      if (keyword.value === "") {
+        keyword.value = "";
+      } else {
+        keyword.value = keyword.value.slice(0, -1);
+      }
+}
+const buttonEvent = (str, e) => {
+  switch (str) {
+    case "clear":
+      keyword.value = "";
+      break;
+    case "back":
+      keyValueCheck()
+      break;
+    case "more":
+      createFakeElementAndRemove()
       break;
   }
 };

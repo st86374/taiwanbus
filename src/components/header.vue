@@ -32,9 +32,7 @@
 
     <div class="flex items-center justify-end flex-1">
       <label for="toggleTheme" class="flex items-center cursor-pointer">
-        <!-- toggle -->
         <div class="relative">
-          <!-- input -->
           <input
           :checked="toggle"
             type="checkbox"
@@ -43,9 +41,7 @@
             @change="themeSet($event)"
           />
 
-          <!-- line -->
           <div class="block h-8 bg-gray-600 rounded-full w-14"></div>
-          <!-- dot -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="moon h-6 w-6 absolute text-white right-[3px] bottom-2/4 translate-y-2/4"

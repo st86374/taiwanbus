@@ -204,14 +204,6 @@ const listFilter = (str) => {
   }
   return result;
 };
-const getCityBus = async (city) => {
-  try {
-    const res = await apiGetCityRoute(city);
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
-};
 const scrollPoint = (i) => {
   if (i > -1) {
     const block = document.querySelectorAll(".js-block");
