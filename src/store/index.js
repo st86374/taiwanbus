@@ -31,7 +31,6 @@ const store = createStore({
     theme(state){
       return state.theme
     },
-  
   }
 });
 
